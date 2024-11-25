@@ -1,0 +1,55 @@
+{% extends 'base.jinja' %}
+
+
+{% block contenu %}
+<header>
+    <h1>Création de compte</h1>
+</header>
+
+<main>
+    <form method="post" action="/compte/creer" novalidate="novalidate">
+
+        <div>
+            <label for="courriel">
+                Courriel : </label>
+            <input type="text" name="courriel" id="courriel" placeholder="votre courriel"
+                   value="{{champs.courriel.valeur}}" />
+        </div>
+
+        <div>
+            <label for="nom">
+                Nom : </label>
+            <input type="text" name="nom" id="nom" placeholder="votre nom"
+                   value="{{champs.nom.valeur}}"/>
+        </div>
+
+        <div>
+            <label for="mdp">Mot de passe : </label>
+            <input type="password" name="mdp" id="mdp" placeholder="votre mot de passe"
+{% if champs.mdp.en_erreur %}
+                    class="is-invalid"
+{% endif %}
+            />
+            <div>
+                Votre mot de passe et sa confirmation diffèrent.
+            </div>
+        </div>
+
+        <div>
+            <label for="mdp2">Confirmation du mot de passe : </label>
+            <input type="password" name="mdp2" id="mdp2" placeholder="votre mot de passe à nouveau"
+{% if champs.mdp.en_erreur %}
+            class="is-invalid"
+{% endif %}
+            />
+            <div>
+                Votre mot de passe et sa confirmation diffèrent.
+            </div>
+        </div>
+
+        <div>
+            <button type="submit">Créer un compte</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

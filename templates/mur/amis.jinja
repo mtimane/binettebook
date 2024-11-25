@@ -1,0 +1,21 @@
+{% extends "base.jinja" %}
+
+{% block contenu %}
+<header>
+    <h1>Les amis de {{profile.nom}}</h1>
+</header>
+
+<ul>
+{% for ami in amis %}
+    <li>{{ami.nom}}</li>
+{% endfor %}
+</ul>
+
+{% if peuvent_etre_amis %}
+<form action="/mur/{{profile.id_utilisateur}}/amis" method="post">
+    <button type="submit">Devenir ami!</button>
+</form>
+{% endif %}
+
+
+{% endblock %}

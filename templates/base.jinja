@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+
+<head>
+    <title>Binette Book</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Une site pour partager sa vie et plus encore!">
+    <meta name="keywords" content="Binette social media">
+    <meta name="author" content="Ton Prof">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://www.cegepgarneau.ca/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+
+<body>
+    {% block contenu %}
+    {% endblock %}
+
+    <footer>
+{% if session.utilisateur %}
+        Authentifié en tant que <em>{{session.utilisateur.nom}}</em>. <a href="/compte/deconnecter">Se déconnecter</a>
+{% else %}
+        <a href="/compte/authentifier">S'authentifier</a> ou <a href="/compte/creer">Créer un compte</a>
+{% endif %}
+    </footer>
+	
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2CBQS9QQH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V2CBQS9QQH');
+</script>
+</body>
+
+</html>

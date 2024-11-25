@@ -1,0 +1,40 @@
+{% extends "base.jinja" %}
+
+{% block contenu %}
+<header>
+    <h1>{{profile.nom}}</h1>
+</header>
+
+<main>
+    <section>
+        <h2>Informations</h2>
+        <p>
+            Voir <a href="/mur/{{profile.id_utilisateur}}/amis">les amis de {{profile.nom}}</a>
+        </p>
+    </section>
+
+    <section>
+        <h2>Messages</h2>
+        <ul>
+{% for m in messages %}
+            <li><em>{{m.contenu}}</em> de <a href="/mur/{{m.fk_auteur}}">{{m.nom}}</a></li>
+{% endfor %}
+        </ul>
+
+{% if session.utilisateur %}
+        <form method="post" action="/mur/{{profile.id_utilisateur}}">
+            <input type="text" name="contenu" placeholder="votre message"
+    {% if erreur_message %}
+                class="is-invalid"
+    {% endif %}
+            />
+            <div class="invalid-feedback">
+                Le message ne peut pas être vide
+            </div>
+            <button type="submit">Envoyer</button>
+        </form>
+{% endif %}
+    </section>
+
+</main>
+{% endblock %}

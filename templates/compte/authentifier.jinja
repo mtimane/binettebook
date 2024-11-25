@@ -1,0 +1,42 @@
+{% extends 'base.jinja' %}
+
+
+{% block contenu %}
+<header>
+    <h1>Authentification</h1>
+</header>
+
+<main>
+    <form method="post" action="/compte/authentifier" novalidate="novalidate">
+
+        <div>
+            <label for="courriel">
+                Courriel : </label>
+            <input type="email" name="courriel" id="courriel" placeholder="votre courriel"
+                value="{{courriel}}"
+{% if erreur %}
+                class="is-invalid"
+{% endif %}
+            />
+            <div>
+                Courriel ou mot de passe inconnu
+            </div>
+        </div>
+        <div>
+            <label for="mdp">Mot de passe : </label>
+            <input type="password" name="mdp" id="mdp" placeholder="votre mot de passe"
+{% if erreur %}
+                class="is-invalid"
+{% endif %}
+            />
+            <div>
+                Courriel ou mot de passe inconnu
+            </div>
+        </div>
+
+        <div>
+            <button type="submit">S'authentifier</button>
+        </div>
+    </form>
+</main>
+{% endblock %}
