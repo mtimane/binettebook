@@ -83,6 +83,6 @@ def creer():
 def deconnecter():
     """Pour se déconnecter"""
     if "utilisateur" in session:
-        app.logger.info(f"Déconnexion de {session['utilisateur']['courriel']}")               # pylint: disable=no-member
+        app.logger.info(f"Déconnexion de {session['utilisateur']['courriel']}")               
     session.clear()
     return redirect("/")
